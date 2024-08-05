@@ -1,0 +1,60 @@
+import "../../../libraries/types/can.did";
+
+type PostsArgs = record {
+  limit: nat64;
+  current_page: nat64;
+};
+
+type PostsResponse = variant {
+  Success(PostsResult);
+};
+
+type PostsResult = record {
+  limit: nat64;
+  current_page: nat64;
+  total_pages: nat64;
+  data: vec Post;
+};
+
+type PostArgs = record {
+  id: nat64;
+};
+
+type PostResponse = variant {
+  Success(PostResult);
+  PostNotFound;
+  NoAuthority;
+};
+
+type PostResult = record {
+  data: Post;
+};
+
+type PublishPostArgs = record {
+  content: text;
+  image: opt text;
+  video: opt text;
+  post_type: PostType;
+};
+
+type PublishPostResponse = variant {
+  Success;
+};
+
+type RemovePostArgs = record {
+  id: nat64;
+};
+
+type RemovePostResponse = variant {
+  Success;
+  PostNotFound;
+  NoAuthority;
+};
+
+service: {
+  "posts": (PostsArgs) -> (PostsResponse) query;
+  "post": (PostArgs) -> (PostResponse) query;
+
+  "publish_post": (PublishPostArgs) -> (PublishPostResponse);
+  "remove_post": (RemovePostArgs) -> (RemovePostResponse);
+}

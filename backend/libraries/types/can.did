@@ -1,0 +1,4 @@
+type CanisterId = principal;
+type TimestampMillis = nat64;
+type UserId = CanisterId;
+type Cycles = nat;

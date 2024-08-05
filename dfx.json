@@ -1,0 +1,24 @@
+{
+  "canisters": {
+    "users": {
+      "candid": "backend/canisters/users/api/can.did",
+      "package": "users_canister_api",
+      "type": "rust"
+    },
+    "app": {
+      "frontend": {
+        "entrypoint": "out/index.html"
+      },
+      "source": ["out"],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
