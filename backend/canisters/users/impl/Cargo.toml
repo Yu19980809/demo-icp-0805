@@ -8,8 +8,14 @@ crate-type = ["cdylib"]
 
 [dependencies]
 candid = { workspace = true }
+canister_state_macros = { path = "../../../libraries/canister_state_macros" }
 ic-cdk = { workspace = true }
 ic-cdk-macros = { workspace = true }
-users_canister_api = { path = "../api" }
+ic-cdk-timers = { workspace = true }
+ic-stable-structures = { workspace = true }
+serde = { workspace = true }
+stable_memory = { path = "../../../libraries/stable_memory" }
+serializer = { path = "../../../libraries/serializer" }
 types = { path = "../../../libraries/types" }
+users_canister = { path = "../api" }
 utils = { path = "../../../libraries/utils" }

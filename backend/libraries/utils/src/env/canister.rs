@@ -1,19 +1,25 @@
+use crate::env::Environment;
+use crate::time;
 use candid::Principal;
-use types::{CanisterId, Cycles, TimestampMillis};
+use rand::rngs::StdRng;
+use rand::SeedableRng;
+use types::{CanisterId, Cycles, TimestampNanos};
 
-use super::Environment;
-
-pub struct CanisterEnv {}
+pub struct CanisterEnv {
+  rng: StdRng
+}
 
 impl CanisterEnv {
-  pub fn new() -> Self {
-    CanisterEnv {}
+  pub fn new(seed: [u8; 32]) -> Self {
+    CanisterEnv {
+      rng: StdRng::from_seed(seed)
+    }
   }
 }
 
 impl Environment for CanisterEnv {
-  fn now(&self) -> TimestampMillis {
-    ic_cdk::api::time()
+  fn now_nanos(&self) -> TimestampNanos {
+    time::now_nanos()
   }
 
   fn caller(&self) -> Principal {
@@ -26,5 +32,17 @@ impl Environment for CanisterEnv {
 
   fn cycles_balance(&self) -> Cycles {
     ic_cdk::api::canister_balance().into()
+  }
+
+  fn rng(&mut self) -> &mut StdRng {
+    &mut self.rng
+  }
+}
+
+impl Default for CanisterEnv {
+  fn default() -> Self {
+    // let seed = CanisterEnv::new([0; 32]).entropy();
+    let seed = [0; 32];
+    CanisterEnv::new(seed)
   }
 }

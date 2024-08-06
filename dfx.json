@@ -2,7 +2,7 @@
   "canisters": {
     "users": {
       "candid": "backend/canisters/users/api/can.did",
-      "package": "users_canister_api",
+      "package": "users_canister",
       "type": "rust"
     },
     "app": {
