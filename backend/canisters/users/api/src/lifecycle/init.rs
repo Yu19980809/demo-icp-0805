@@ -6,4 +6,5 @@ use types::BuildVersion;
 pub struct Args {
     pub owner: Principal,
     pub wasm_version: BuildVersion,
+    pub test_mode: bool,
 }

@@ -12,6 +12,7 @@ pub use posts::*;
 pub use timestamped::*;
 
 pub type CanisterId = Principal;
+pub type CommentId = u64;
 pub type PostId = u64;
 pub type Milliseconds = u64;
 pub type TimestampMillis = u64;

@@ -1,7 +1,8 @@
+use crate::model::post::Post;
 use candid::CandidType;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
-use types::{Post, PostId, PostType, TimestampMillis};
+use types::{PostId, TimestampMillis};
 use utils::env::Environment;
 
 #[derive(Default, Deserialize, Serialize)]
