@@ -46,6 +46,7 @@ struct Data {
   pub owner: Principal,
   pub posts: Posts,
   pub storage_limit: u64,
+  pub test_mode: bool,
   pub user_created: TimestampMillis,
   pub rng_seed: [u8; 32],
 }
@@ -54,6 +55,7 @@ impl Data {
   #[allow(clippy::too_many_arguments)]
   pub fn new(
     owner: Principal,
+    test_mode: bool,
     now: TimestampMillis
   ) -> Self {
     Data {
@@ -61,6 +63,7 @@ impl Data {
       posts: Posts::default(),
       storage_limit: 0,
       user_created: now,
+      test_mode,
       rng_seed: [0; 32],
     }
   }

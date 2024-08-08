@@ -11,7 +11,12 @@ fn init(args: Args) {
 
   let env = init_env([0; 32]);
   let now = env.now();
-  let data = Data::new(args.owner, now);
+  
+  let data = Data::new(
+    args.owner,
+    args.test_mode,
+    now
+  );
 
   init_state(env, data, args.wasm_version);
 
